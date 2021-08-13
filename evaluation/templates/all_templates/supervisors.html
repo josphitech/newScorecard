@@ -1,0 +1,174 @@
+{%extends 'all_templates/base.html'%}
+
+{% block content %}
+    <div class="row">
+        {%for supervisor in supervisors%}
+            <div class="col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>Contact Information</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{supervisor.firstName}} {{supervisor.lastName}}</h4><br>
+                        <h4>{{supervisor.email}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>Supevisors programme</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{supervisor.programme}}</h4>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>Department</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{supervisor.department}}</h4>
+                    </div> 
+                </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+
+
+
+    <br><br><br>
+    
+        <div class="row">
+            <div class="col-md-6 col-lg-6" >
+                <div  class="card">
+                    <div class="card-header">
+                        <h3><b>Kindly Rate Your Supervisor</b></h3>
+                        <h4>Supervisor Characteristics</h4>
+                    </div>
+                    <div class="card-body">
+                    <p>Rating scale: 1=Poor, 2=Fair 3=Good 4=Very Good 5 = Excellent</p>
+                    <table class="table table-striped">
+                        <form action="" method="POST" id="one">
+                      
+                        {%csrf_token%}
+                            <tr>
+                                <td>supervisor</td>
+                                <td>{{mform.supervisor}}</td>  
+                            </tr>
+                            <tr>
+                                <th>Indicators</th>
+                                <th>Points Available</th>
+                                <th>Ratings</th>
+                            </tr>
+                            <tr>
+                                <td>Willingness of the supervisor to guide students</td>
+                                <td>5</td>
+                                <td>{{mform.superOne}}</td>
+
+                                </tr>
+                                <tr>
+                                <td>Preparedness of the supervisor during student
+                                    meetings</td>
+                                    <td>5</td>
+                                    <td>{{mform.superTwo}}</td>
+    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Timely feedback to students
+                                    </td>
+                                    <td>5</td>
+                                    <td>{{mform.superThree}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>The supervisor provided clear assessment
+                                        requirements</td>
+                                    <td>5</td>
+                                    <td>{{mform.superFour}}</td>
+                                </tr>
+                                <!-- <tr>
+                                    <td>Total score</td>
+                                    <td>20</td>
+                                    <td><p id="totalss" name= "form.marks">{{mform.marks}}</p></td>
+                            </tr> -->
+                            <tr>
+                                <td colspan="2"><input type="submit"  name="supervisorC"  value="RATE" onclick="sumValues()"></td>
+                            </tr>
+                        </form>
+                    </table>
+                    </div>
+                </div>
+
+            </div>
+       
+            <div class="col-md-6 col-lg-6" >
+                <div  class="card">
+                    <div class="card-header">
+                        <h3><b>Kindly Rate Your Supervisor</b></h3>
+                        <h4>student Characteristics</h4>
+                    </div>
+                    <div class="card-body">
+                    <p>Rating scale: 1=Poor, 2=Fair 3=Good 4=Very Good 5 = Excellent</p>
+                    <table class="table table-striped">
+                   
+                        <form action="" method="POST">
+                        {%csrf_token%}
+                            <tr>
+                                <td>supervisor</td>
+                                <td>{{sform.supervisor}}</td>  
+                            </tr>
+                            <tr>
+                                <th>Indicators</th>
+                                <th>Points Available</th>
+                                <th>Ratings</th>
+                            </tr>
+                            <tr>
+                                <td>Ability of the student to develop ideas and
+                                    present them in written format</td>
+                                <td>5</td>
+                                <td>{{sform.studentOne}}</td>
+
+                                </tr>
+                                <tr>
+                                <td>Ability of the student to identify methods for
+                                    achieving goals</td>
+                                    <td>5</td>
+                                    <td>{{sform.studentTwo}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Ability of the student to solve difficult research related problems
+                                    </td>
+                                    <td>5</td>
+                                    <td>{{sform.studentThree}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>  The research sharpened the student’s analytical skills </td>
+                                    <td>5</td>
+                                    <td>{{sform.studentFour}}</td>
+
+                                </tr>
+                                <!-- <tr>
+                                    <td>Total score</td>
+                                    <td>20</td>
+                                    <td><p id="totlss" name= "">{{sform.marks}}</p></td>
+                                </tr> -->
+                                <tr>
+                                    <td colspan="2"><input type="submit" name="studentC" value="RATE" onclick="sumValue()"></td>
+                                </tr>
+                        </form>
+                    </table>
+                    </div>
+                </div>
+
+            </div> 
+        </div>
+
+
+{% endblock %}

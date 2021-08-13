@@ -1,0 +1,123 @@
+{%extends 'all_templates/base.html'%}
+{%block content%}
+    <div class="row">
+        {%for supervisor in supervisors%}
+            <div class="col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>Contact Information</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{supervisor.firstName}} {{supervisor.lastName}}</h4><br>
+                        <h4>{{supervisor.email}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>Supevisors programme</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{supervisor.programme}}</h4>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>Department</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{supervisor.department}}</h4>
+                    </div> 
+                </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Rate Supervisor</h3>
+                    <h4>Learning Resources and facilities</h4>
+                </div>
+                <div class="card-body">
+                    <p>Rating scale: 1=Poor, 2=Fair 3=Good 4=Very Good 5 = Excellent</p>
+                    <table class="table table-striped">
+                       <form action="" method="POST">
+                        {%csrf_token%}
+                            <tr>
+                                <td>supervisor</td>
+                                <td>{{form.supervisor}}</td>  
+                            </tr>                        
+                            <tr>
+                                <th>Indicators</th>
+                                <th>Points Available</th>
+                                <th>Rating</th>
+                            </tr>
+                            <tr>
+                                <td>The supervisor uses e-learning resources for evaluation and feedback</td>
+                                <td>5</td>
+                                <td>{{form.learningOne}}</td>
+                            </tr>
+                            <tr>
+                                <td>Use of videoconferencing facilities for meetings.</td>
+                                <td>5</td>
+                                <td>{{form.learningTwo}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <td>Total score</td>
+                                <td>10</td>
+                                <td><p id="totlss" name= "">{{form.marks}}</p></td>
+                            </tr> -->
+                            <tr> <td><input type="submit" name="learning" id="" value="Rate"></td></tr>
+                    </form> 
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-lg-6">
+                    <div class="card"> 
+                        <div class="card-header">  
+                            <h3>Rate Supervisor</h3>     
+                            <h4>Supervisor Characteristics</h4>            
+                        </div>    
+                        <div class="card-body">
+                            <p>Rating scale: 1=Poor, 2=Fair 3=Good 4=Very Good 5 = Excellent</p>
+
+                            <table class="table table-striped">
+
+                                 <form action=""  method="POST">
+                                {%csrf_token%}
+                                    <tr>
+                                        <td>supervisor</td>
+                                        <td>{{mform.supervisor}}</td>  
+                                    </tr>   
+                                    <tr>
+                                        <th>Indicators</th>
+                                        <th>Points Available</th>
+                                        <th>Score</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Supervisor guided students to complete research on time </td>
+                                        <td>5</td>
+                                        <td>{{mform.superCoorOne}}</td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>Total Score </td>
+                                        <td>5</td>
+                                        <td>{{mform.marks}}</td>
+                                    </tr> -->
+                                    <tr> <td><input type="submit" name="coordinatorR" id="" value="Rate"></td></tr>
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+      
+        </div>
+
+    </div>
+{%endblock%}

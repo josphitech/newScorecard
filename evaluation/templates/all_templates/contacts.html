@@ -1,0 +1,87 @@
+{%extends 'all_templates/base.html'%}
+{% block content%}
+{% if submitted %}
+   <p class="success">
+     Your message was submitted successfully. Thank you.
+   </p>
+ 
+ {% else %}
+   <form action="" method="post" novalidate>
+   <table>
+     {{ form.as_table }}
+     <tr>
+       <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <div class="row">
+          <div class="col-md-6 col-lg-6" >
+            <div  class="card">
+                <div class="card-header">
+                    <h3><b>Kindly Rate Your Supervisor</b></h3>
+                    <h4>student Characteristics</h4>
+                </div>
+                <div class="card-body">
+                <p>Rating scale: 1=Poor, 2=Fair 3=Good 4=Very Good 5 = Excellent</p>
+                <table class="table">
+                    <tr>
+                        <th>Indicators</th>
+                        <th>Points Available</th>
+                        <th>Ratings</th>
+                    </tr>
+                    <tr>
+                        <td>Ability of the student to develop ideas and
+                            present them in written format</td>
+                        <td>5</td>
+                        <td><input type="number" placeholder="1-5" min="1" max="5"  id="value1" onmouseout="sumValues()"></td>
+
+                        </tr>
+                        <tr>
+                        <td>Ability of the student to identify methods for
+                            achieving goals</td>
+                            <td>5</td>
+                            <td><input type="number" placeholder="1-5" min="1" max="5" id="value2" onmouseout="sumValues()"></td>
+
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                Ability of the student to solve difficult research related problems
+                            </td>
+                            <td>5</td>
+                            <td><input type="number"  placeholder="1-5" min="1" max="5" id="value3" onmouseout="sumValues()"></td>
+
+
+                        </tr>
+                        <tr>
+                            <td>                                    The research sharpened the student’s analytical
+                                skills </td>
+                            <td>5</td>
+                            <td><input type="number"  placeholder="1-5" min="1" max="5" id="value4" onmouseout="sumValues()"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Total score</td>
+                            <td>20</td>
+                            <td><p name="totals" id="totals" >{{form.totals}}</p></td>
+                    </tr>
+                    <tr>
+                        <!-- <td colspan="2"><input type="submit" value="RATE" onclick="sumValues()"></td> -->
+                    </tr>
+                </table>
+                </div>
+            </div>
+
+        </div>
+      </tr>
+      <tr>
+       <td><input type="submit" value="Submit" onclick="sumValues()"></td>
+     </tr>
+   </table>
+   {% csrf_token %}
+   </form>
+ {% endif %}
+{%endblock%}
+
+
+
+

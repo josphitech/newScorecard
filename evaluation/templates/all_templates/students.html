@@ -1,0 +1,44 @@
+{% extends 'all_templates/base.html'%}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-1 col-lg-1">
+
+        </div>
+        <div class="col-md-10 col-lg-10">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Select Your supervisor in the list  below</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr> 
+                            <th>Supervisors Name</th>
+                            <th>Supervisors Number</th>
+                            <th>department</th>
+                            <th>Rate Supervisor</th>
+                            <th>View Rates</th>
+                        </tr>
+                        {%if supervisors%}
+                            {% for supervisor in supervisors %} 
+                                <tr>
+                                    <td>{{supervisor.firstName}}  {{supervisor.lastName}}</td>
+                                    <td>{{supervisor.supervisorsNumber}}</td>
+                                    <td>{{supervisor.department}}</td>
+                                    <td><a href="{% url 'supervisors' supervisor.id %}">Select</a></td> 
+                                    <td><a href="{% url 'rating' supervisor.id %}">Select</a></td> 
+
+                                </tr>
+                            {%endfor%}
+
+                        {%endif%}
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-1 col-lg-1">
+        </div>
+    </div>
+{%endblock%}

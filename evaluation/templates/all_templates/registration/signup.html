@@ -1,0 +1,65 @@
+{%extends 'all_templates/base.html'%}
+{% block content%}
+    {%csrf_token%}
+
+   <form action="" method="POST">
+        {%csrf_token%}     
+          <div class="row">
+               <div class="col-md-3 col-lg-3">
+                    
+               </div>   
+               <div class="col-md-6 col-lg-6">
+                    <div class="card">
+                         <div  class="card-header"> 
+                              <h3>Registration Page</h3>
+                         </div>
+                         <div class="card-body">  
+                              <table class="table">
+                                   <tr>
+                                        <th>{{form.username.label}}</th>
+                                        <td> {{form.username}} </td>
+                                   </tr>
+                                   <tr>
+                                        <th>  {{form.email.label}}</th>
+                                        <td> {{form.email}}</td>
+                                       
+                                   </tr>
+                                   <tr>
+                                        <th> {{form.password1.label}}</th>
+                                       <td>{{form.password1}}</td>
+                                        
+                                   </tr>
+                                   <tr>
+                                        <th>{{form.password2.label}}</th>
+                                        <td>{{form.password2}}</td>
+                                   </tr>
+                                   <tr>
+                                        <th colspan="2"> <input type="submit" name="Create User" value="Register Account"></th>
+                              
+                                   </tr>
+                                   <tr>
+                                        <td colspan="2">
+                                             {{form.errors}}
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th colspan="2">
+                                             <p>Already have an account? <a href="{% url 'login'%}">Login</a></p>
+                                        </th>
+                                    </tr>
+                              </table>
+
+                         </div>
+          
+                    </div>
+          
+               </div>
+               <div class="col-md-3 col-lg-3">
+                    
+               </div>  
+
+          </div>     
+        
+   
+   </form>
+{%endblock%}

@@ -1,0 +1,76 @@
+{%extends 'all_templates/base.html'%}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>No of Students</h3>
+                </div>
+                <div class="card-body">
+                            {{n_students}}
+                </div>
+
+            </div>
+        </div> 
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>No of Supervisors</h3>
+                </div>
+                <div class="card-body">
+                    {{n_supervisors}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>No of Coordinators</h3>
+                </div>
+                <div class="card-body">
+                    {{n_coordinators}}
+                </div>
+            </div>
+        </div> 
+
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+
+        </div>
+        <div class="col-md-9 col-lg-9">
+            <div class="card">
+                <div class="card-header">
+                   <h3Students</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Supervisors Name</th>
+                            <th>Supervisors Number</th>
+                            <th>department</th>
+                            <th>Rate Supervisor</th>
+                            <th> View Rates</th>
+                        </tr>
+                        {%if supervisors%}
+                            {% for supervisor in supervisors %} 
+                                <tr>
+                                    <td>{{supervisor.firstName}}  {{supervisor.lastName}}</td>
+                                    <td>{{supervisor.supervisorsNumber}}</td>
+                                    <td>{{supervisor.department}}</td>
+                                    <td><a href="{% url 'coordinators' supervisor.id %}">Select</a></td> 
+                                    <td><a href="{% url 'codRating' supervisor.id %}">Select</a></td> 
+                                </tr>
+                            {%endfor%}
+                        {%endif%}
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock  %}

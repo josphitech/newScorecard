@@ -1,0 +1,118 @@
+{% extends 'all_templates/base.html'%}
+{% block content%}
+    <div class="row">
+
+        {% if supervisors%}
+            {%for supervisor in supervisors%}
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Contact Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{supervisor.firstName}} {{supervisor.lastName}}</h4><br>
+                            <h4>{{supervisor.email}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Programme</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{supervisor.programme}}</h4>  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Department</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{supervisor.department}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Number of rates</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{number_of_rates}}</h4>
+                        </div>
+                    </div>
+                </div>
+                
+        {%endfor%}
+    {%endif%}
+    </div>
+
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-1 col-lg-1"></div>
+        <div class="col-md-9 col-lg-9">
+            <h3>Supervisor Characteristics</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th> Supervisor Serial Number</th>
+                    <th>Supervisor Name</th>
+                    <th>Willingness of the supervisor</th>
+                    <th>Preparedness of the supervisor</th>
+                    <th>Timely feedback</th>
+                    <th>Clear assessment Requirements</th>
+                    <th>Total Rating</th>
+                </tr>
+              
+                    {% if supervisorcharacteristics%}
+                        {% for supervisorcharacteristic in supervisorcharacteristics%}
+                          <tr>
+                            <td>{{supervisorcharacteristic.supervisor.supervisorsNumber}}</td>
+                            <td>{{supervisorcharacteristic.supervisor.firstName}}</td>
+                            <td>{{supervisorcharacteristic.superOne}}</td>
+                            <td>{{supervisorcharacteristic.superTwo}}</td>
+                            <td>{{supervisorcharacteristic.superThree}}</td>
+                            <td>{{supervisorcharacteristic.superFour}}</td>
+                            <td>{{supervisorcharacteristic.marks}}</td>
+                          </tr>  
+                        {%endfor%}
+                    {%endif%}
+                
+
+            </table>
+        </div>
+    </div>
+    <div class="row"style="padding-top: 50px;">
+        <div class="col-md-1 col-lg-1"></div>
+        <div class="col-md-9 col-lg-9">
+            <h3>Student Characteristics</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Serial</th>
+                    <th>Supervisor Name</th>
+                    <th>Ability to develop ideas</th>
+                    <th>Abilty to achieve goals</th>
+                    <th>Ability to solve difficult problems</th>
+                    <th>Sharpened Students Analytical skills</th>
+                    <th>Total Rating</th>
+                </tr>
+               {% if studentcharacteristics%}
+                    {%for studentcharacteristic in studentcharacteristics%}
+                    <tr>
+                        <td>{{studentcharacteristic.supervisor.supervisorsNumber}}</td>
+                        <td>{{studentcharacteristic.supervisor.firstName}}</td>
+                        <td>{{studentcharacteristic.studentOne}}</td>
+                        <td>{{studentcharacteristic.studentTwo}}</td>
+                        <td>{{studentcharacteristic.studentThree}}</td>
+                        <td>{{studentcharacteristic.studentFour}}</td>
+                        <td>{{studentcharacteristic.marks}}</td>
+                    </tr>
+                    {%endfor%}
+
+               {%endif%}
+
+            </table>
+        </div>
+    </div>
+{%endblock%}

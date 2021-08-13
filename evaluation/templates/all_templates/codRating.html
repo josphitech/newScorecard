@@ -1,0 +1,113 @@
+{% extends 'all_templates/base.html'%}
+{% block content%}
+    <div class="row">
+
+        {% if supervisors%}
+            {%for supervisor in supervisors%}
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Contact Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{supervisor.firstName}} {{supervisor.lastName}}</h4><br>
+                            <h4>{{supervisor.email}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Programme</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{supervisor.programme}}</h4>  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Department</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{supervisor.department}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Number of rates</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{number_of_rates}}</h4>
+                        </div>
+                    </div>
+                </div>
+        {%endfor%}
+    {%endif%}
+    </div>
+    
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-md-1 col-lg-1">
+
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <h3>E-learning resources and facilities</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Coordinators Number</th>
+                        <th>Supervisor Number</th>
+                        <th>The supervisor uses E-learning resources</th>
+                        <th>The supervisor uses video conferencing facilities for meetings</th>
+                        <th>Total Rating</th>
+                    </tr>
+                    {% if codrating%}
+                    {%for codrating in codrating%}
+                    <tr>
+                        <td>{{codrating.supervisor.coordinator.coordinatorsNumber}}</td>
+                        <td>{{codrating.supervisor.supervisorsNumber}}</td>
+                        <td>{{codrating.learningOne}}</td>
+                        <td>{{codrating.learningTwo}}</td>
+                        <td>{{codrating.marks}}</td>
+                    </tr>
+                    {%endfor%}
+
+               {%endif%}
+                
+    
+                </table>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 50px;"> 
+            <div class="col-lg-1 col-md-1"></div>
+            <div class="col-md-9 col-lg-9">
+                <h3>Supervisor rating</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Coordinators Number</th>
+                        <th>Supervisor Number</th>
+                        <th>Supervisor guided students to complete research on time.</th>
+                        <th>Total Rating</th>
+                    </tr>
+                    {% if codrating2%}
+                    {%for codrating2 in codrating2%}
+                    <tr>
+                        <td>{{codrating2.supervisor.coordinator.coordinatorsNumber}}</td>
+                        <td>{{codrating2.supervisor.supervisorsNumber}}</td>
+                        <td>{{codrating2.superCoorOne}}</td>
+                        <td>{{codrating2.marks}}</td>
+                    </tr>
+                    {%endfor%}
+
+               {%endif%}
+
+                </table>
+            </div>
+
+        </div>
+        </div>
+
+
+{%endblock%}
