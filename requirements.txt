@@ -27,7 +27,7 @@ decorator==4.4.2
 # defer==1.0.6
 defusedxml==0.7.0
 distro==1.4.0
-distro-info===0.23ubuntu1
+# distro-info===0.23ubuntu1
 Django==3.2.3
 django-bootstrap3==15.0.0
 django-registration==2.4.1
