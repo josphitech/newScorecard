@@ -23,7 +23,7 @@ SECRET_KEY = 'django-insecure-&^hcq@ston&)9xu0#$4r_91w&m!+m1fe!yi(9z9^f78hms5e6=
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["testingappppp.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["testing123-q.herokuapp.com", "127.0.0.1"]
 
 
 INSTALLED_APPS = [
