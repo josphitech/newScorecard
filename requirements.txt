@@ -36,7 +36,7 @@ django-bootstrap3==15.0.0
 django-registration==2.4.1
 django-tinymce==3.3.0
 django-utils-six==2.0
-duplicity==0.8.12.0
+
 entrypoints==0.3
 fasteners==0.14.1
 filelock==3.0.12
