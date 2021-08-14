@@ -81,7 +81,6 @@ class  StudentCharacteristics(models.Model):
     studentThree = models.IntegerField()
     studentFour = models.IntegerField()
     marks = models.IntegerField()
-    # user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
     
 
 class  CoordinatorRateLearning(models.Model):
@@ -90,7 +89,6 @@ class  CoordinatorRateLearning(models.Model):
     learningTwo = models.IntegerField()
     marks = models.IntegerField()
     
-    # user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
 
 class CoordinatorRateSupervisor(models.Model):
     supervisor = models.ForeignKey(Supervisor, on_delete=models.CASCADE)

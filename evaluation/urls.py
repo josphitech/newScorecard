@@ -13,6 +13,5 @@ urlpatterns = [
     path('rating/<int:my_id>/', views.rating, name='rating'),
     path('codRating/<int:my_id>/', views.codRating, name='codRating'),
     path('contact/<int:my_id>', views.contact, name='contact'),
-    # path('secondForm/', views.secondForm, name='secondForm'),
     path('coordinator/<int:my_id>/', views.coordinatorRating, name='coordinators'),
 ]

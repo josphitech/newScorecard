@@ -168,19 +168,6 @@ def coordinatorRating(request,my_id):
         
 
 
-# def get_name(request):
-#     if request.method == 'POST':
-#         form = NameForm(request.POST)
-#         if form.is_valid():
- 
-#             return HttpResponseRedirect('/thanks/')
-
-#     else:
-#         form = NameForm()
-
-#     return render(request, 'all_templates/supervisors.html', {'form': form})
-
-
 
 def contact(request, my_id):
     submitted = False
@@ -198,10 +185,5 @@ def contact(request, my_id):
             submitted = True
 
     supervisor = Supervisor.objects.filter(id=my_id)
-    # supervisorCoordCharacteristics = CoordinatorRateCharacteristics.objects.all()
-    # marks = CoordinatorRateCharacteristics.marks
-    # no_of_rates = supervisorCoordCharacteristics.count()
-    # superid = CoordinatorRateCharacteristics.supervisor
-    # context = {'supervisors':supervisor, 'coordinators': supervisorCoordCharacteristics, 'rates': no_of_rates, 'marks':marks, 'superid':superid, 'form': form, 'submitted': submitted}
-
+   
     return render(request, 'all_templates/contacts.html')
